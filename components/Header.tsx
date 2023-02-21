@@ -1,36 +1,19 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { FaBars, FaRegWindowClose } from "react-icons/fa";
-import { useState } from "react";
 import Link from "next/link";
+import Logo from "./Logo";
+import PageLinks from "./PageLinks";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  let logoWidth = 120;
-  useEffect(() => {
-    dynamicWidth;
-  }, [logoWidth]);
-
-  const dynamicWidth = () => {
-    if (typeof window !== "undefined") {
-      window.innerWidth <= 767 ? (logoWidth = 120) : (logoWidth = 200);
-    }
-    return logoWidth;
-  };
 
   return (
     <header className="bg-gray-200 grid grid-cols-2">
-      <Image
-        alt="logo img"
-        src="/logo-placeholder.svg"
-        width={dynamicWidth()}
-        height={60}
-        className="p-2"
-      />
+      <Logo />
+      <PageLinks />
       <nav
-        className="ml-auto my-auto p-2 cursor-pointer"
+        className="ml-auto my-auto p-2 cursor-pointer md:hidden lg:hidden xl:hidden 2xl:hidden"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <span hidden={dropdownOpen}>
@@ -42,23 +25,23 @@ const Header = (props: Props) => {
       </nav>
       {dropdownOpen && (
         <div
-          className="grid grid-cols-1 grid-rows-3 gap-3"
+          className="grid grid-cols-1 grid-rows-3 gap-3 md:hidden lg:hidden xl:hidden 2xl:hidden"
           onClick={() => setDropdownOpen(false)}
         >
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1"
+            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
             href="/"
           >
             Home
           </Link>
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1"
+            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
             href="/about"
           >
             About
           </Link>
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1"
+            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
             href="/contact"
           >
             Contact
