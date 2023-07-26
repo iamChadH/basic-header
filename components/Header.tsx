@@ -5,15 +5,22 @@ import Link from "next/link";
 import Logo from "./Logo";
 import PageLinks from "./PageLinks";
 
+const Styles = {
+  header: "bg-gray-200 grid grid-cols-2",
+  nav: "ml-auto my-auto p-2 cursor-pointer md:hidden lg:hidden xl:hidden 2xl:hidden",
+  ddOpen: "grid grid-cols-1 grid-rows-3 gap-3 md:hidden lg:hidden xl:hidden 2xl:hidden",
+  links: "text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
+}
+
 const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
-    <header className="bg-gray-200 grid grid-cols-2">
+    <header className={Styles.header}>
       <Logo />
       <PageLinks />
       <nav
-        className="ml-auto my-auto p-2 cursor-pointer md:hidden lg:hidden xl:hidden 2xl:hidden"
+        className={Styles.nav}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <span hidden={dropdownOpen}>
@@ -25,23 +32,23 @@ const Header = () => {
       </nav>
       {dropdownOpen && (
         <div
-          className="grid grid-cols-1 grid-rows-3 gap-3 md:hidden lg:hidden xl:hidden 2xl:hidden"
+          className={Styles.ddOpen}
           onClick={() => setDropdownOpen(false)}
         >
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
+            className={Styles.links}
             href="/"
           >
             Home
           </Link>
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
+            className={Styles.links}
             href="/about"
           >
             About
           </Link>
           <Link
-            className="text-black text-left text-lg font-semibold px-2 mr-auto cursor-pointer hover:translate-x-1 hover:text-pink-700/80"
+            className={Styles.links}
             href="/contact"
           >
             Contact
